@@ -1,3 +1,3 @@
 # obs-helper-workflow-sample
 
-null
+github workflow样例,OBS上传下载样例
