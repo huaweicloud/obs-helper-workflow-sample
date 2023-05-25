@@ -1,0 +1,21 @@
+on: [push]
+
+jobs:
+  obs_helper:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Authenticate to Huawei Cloud
+        uses: huaweicloud/auth-action@v1.0.0
+        with: 
+          access_key_id: ${{ secrets.ACCESSKEY }} 
+          secret_access_key: ${{ secrets.SECRETACCESSKEY }}
+          region: '<region>'
+
+      - name: Download File from OBS
+        uses: huaweicloud/obs-helper@v1.4.0
+        id: download_file_from_obs
+        with:
+          bucket_name: '<bucket-name>'
+          obs_file_path: src/download/obsFolder2/obsFile2-1.txt
+          local_file_path: ./resource/download/
+          operation_type: download
